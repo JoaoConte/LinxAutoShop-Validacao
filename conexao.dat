@@ -1,0 +1,15 @@
+[VERSAOEXE]=1.0.0.0
+//Modelo de conexao para Banco de Dados Oracle
+//[BANCODADOS]=ORACLE     
+//[DATABASE]=192.168.25.3/linx
+//[USUARIO_ORACLE]=AKAR
+//Modelo de conexao para Banco de Dados SQL Server
+// Obs.: Obrigatorio informar o endereco IP no path da linha DATABASE
+[BANCODADOS]=SQLSERVER
+[DATABASE]=CONTEVAIO\SQLEXPRESS:APOLLO
+[LOGINPADRAO]=ADMIN
+[SENHAPADRAO]=ADMIN
+[DIRATUALIZACAO]=c:\LinxDMSToyota\atualiza\
+[USUARIOPADRAOFIREBIRD]=SIM
+[CONFIG_REFERENCIA]=1
+[EDITOR]="C:\Program Files (x86)\Microsoft Office\root\Office16\winword.exe"
