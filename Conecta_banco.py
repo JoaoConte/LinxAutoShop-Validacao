@@ -27,9 +27,9 @@ class Conexao():
                         self.usuario1 = self.leitura[17:]
                         self.usuario = self.usuario1.strip('\n')
                         self.senha = 'ninguemsabe'
-            if self.bancodados != 'SQLSERVER':
-                self.ora_conn = (usuario+"/"+senha+"@"+ bancoa+"/"+bancob)
-                self.ora_conn = ('linx/ninguemsabe@contevaio/XE')
+    #        if self.bancodados != 'SQLSERVER':
+    #            self.ora_conn = (usuario+"/"+senha+"@"+ bancoa+"/"+bancob)
+    #            self.ora_conn = ('linx/ninguemsabe@contevaio/XE')
 
         except OSError:
             messagebox.showerror(title='Falha na conexão com o Banco de dados', message='Banco de dados nao encontrado!\n'

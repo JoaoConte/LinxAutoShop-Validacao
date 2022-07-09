@@ -21,18 +21,18 @@ class Funcs():
         self.cnpj = ', '.join(cnpj)
 
     def frame_revenda(self):
-        self.lbl_emprev = Label(self.telaval, text = 'Empresa/Revenda', font=('verdana', 8, 'bold'))
+        self.lbl_emprev = Label(self.frame_selecao, text = 'Empresa/Revenda', font=('verdana', 8, 'bold'))
         self.lbl_emprev.place(relx = 0.05, rely=0.02)
         self.conecta_DB()
         self.cursor.execute("SELECT empresa, revenda,razao_social, cnpj FROM GER_REVENDA")
-        self.listbox = Listbox(self.telaval, width=63, height=5)
+        self.listbox = Listbox(self.frame_selecao, width=63, height=5)
         self.listbox.place(relx=0.05, rely=0.05)
         a = 0
         for linha in self.cursor.fetchall():
             a = a + 1
             self.combo = str(linha[0]) + '.' + str(linha[1]) + ' - ' + linha[2] + ' - CNPJ: ' + linha[3][0:2]+ '.'+ linha[3][2:5] + '.'+ linha[3][5:8]+ '/'+ linha[3][8:12] + '-'+ linha[3][12:14]
             self.listbox.insert(a, self.combo)
-        btn = Button(self.telaval, text='Confirmar Empresa/Revenda', font=('verdana', 8, 'bold'), bg = '#D3D3D3', fg='red', command=self.seleciona_revenda)
+        btn = Button(self.frame_selecao, text='Confirmar Empresa/Revenda', font=('verdana', 8, 'bold'), bg = '#D3D3D3', fg='red', command=self.seleciona_revenda)
         btn.place(relx=0.1, rely=0.2)
         self.desconecta_DB()
 
