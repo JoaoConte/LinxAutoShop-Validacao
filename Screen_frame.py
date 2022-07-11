@@ -35,20 +35,20 @@ class Screen():
         if self.bancodados == 'SQLSERVER':
             self.mostra_banco = Label(self.frame_acesso, text='Banco de Dados: SQL-SERVER', font=('verdana', 15, 'bold'))
             self.mostra_banco.place(relx= 0.25, rely=0.35)
+            self.ver_versao()
+
         else:
             self.mostra_banco = Label(self.frame_acesso, text='Banco de Dados: ORACLE', font=('verdana', 15, 'bold'))
             self.mostra_banco.place(relx= 0.30, rely=0.10)   
             self.lbl_usuario = Label(self.frame_acesso, text='Usuário:')
-            self.lbl_usuario.place(relx=0.1, rely=0.55)
+            self.lbl_usuario.place(relx=0.12, rely=0.55)
             self.ent_usuario = Entry(self.frame_acesso)
             self.ent_usuario.place(relx=0.2, rely= 0.55)
+            self.ent_usuario.insert(END, self.usuario)
             self.lbl_senha = Label(self.frame_acesso, text='Senha:')
-            self.lbl_senha.place(relx=0.6, rely=0.55)
+            self.lbl_senha.place(relx=0.43, rely=0.55)
             self.ent_senha = Entry(self.frame_acesso)
-            self.ent_senha.place(relx=0.7, rely= 0.55)
-
-            
-        self.frame_revenda() # Monta lista de revendas para serem selecionadas
-        self.datago()        # Seleção da data de GOLIVE
-        #-----------------------------------------------------------------------
+            self.ent_senha.place(relx=0.5, rely= 0.55)
+            self.btn_abrebanco = Button(self.frame_acesso, text = 'Abre DB', font=('verdana', 8, 'bold'), command=self.ver_versao)
+            self.btn_abrebanco.place(relx = 0.75, rely = 0.53)
     

@@ -26,15 +26,12 @@ class Conexao():
                     if self.leitura[0:16] == '[USUARIO_ORACLE]':
                         self.usuario1 = self.leitura[17:]
                         self.usuario = self.usuario1.strip('\n')
-                        self.senha = 'ninguemsabe'
-    #        if self.bancodados != 'SQLSERVER':
-    #            self.ora_conn = (usuario+"/"+senha+"@"+ bancoa+"/"+bancob)
-    #            self.ora_conn = ('linx/ninguemsabe@contevaio/XE')
-
+                      
         except OSError:
-            messagebox.showerror(title='Falha na conexão com o Banco de dados', message='Banco de dados nao encontrado!\n'
-                                                                                        'Verifique se o programa executor esta na pasta do sistema\n '
-                                                                                        'ou se na pasta atual tem o arquivo conexao.dat')
+            messagebox.showerror('Falha na conexão com o Banco de dados', 'arquivo CONEXÃO.DAT não encontrado!\n'
+                                                                          'Verifique se o programa executavel do\n'
+                                                                          'validador esta na pasta do sistema\n '
+                                                                          'ou se os dados informados estão corretos')
 
     def conecta_DB(self):
         if self.bancodados != 'SQLSERVER':
