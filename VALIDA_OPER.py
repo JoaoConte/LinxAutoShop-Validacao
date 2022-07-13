@@ -15,7 +15,7 @@ class Application(Funcs, Rel_valida, Screen, Valida, Conexao): # Declarando uso 
         self.telaval = telaval
         self.le_conexao()
         self.tela_validacao()
-        self.cria()
+        #self.cria()
         self.telaval.mainloop()
 
 Application()

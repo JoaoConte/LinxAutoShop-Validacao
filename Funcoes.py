@@ -19,6 +19,7 @@ class Funcs():
         self.revenda = ', '.join(revenda)
         self.combo_p = ', '.join(combo_p1)
         self.cnpj = ', '.join(cnpj)
+        self.resultado.focus_force()
 
     def frame_revenda(self):
         self.lbl_emprev = Label(self.frame_selecao, text = 'Empresa/Revenda', font=('verdana', 8, 'bold'))
