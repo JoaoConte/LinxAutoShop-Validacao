@@ -32,8 +32,9 @@ class Funcs():
             a = a + 1
             self.combo = str(linha[0]) + '.' + str(linha[1]) + ' - ' + linha[2] + ' - CNPJ: ' + linha[3][0:2]+ '.'+ linha[3][2:5] + '.'+ linha[3][5:8]+ '/'+ linha[3][8:12] + '-'+ linha[3][12:14]
             self.listbox.insert(a, self.combo)
-        btn = Button(self.frame_selecao, text='Confirmar Empresa/Revenda', font=('verdana', 8, 'bold'), bg = '#D3D3D3', fg='red', command=self.seleciona_revenda)
-        btn.place(relx=0.1, rely=0.2)
+        btn_validar = Button(self.frame_selecao, text='VALIDAR', font=('verdana', 13, 'bold'), bg = '#D3D3D3', height = 5, 
+          width = 20, command=self.seleciona_revenda)
+        btn_validar.place(relx=0.32, rely=0.3)
         self.desconecta_DB()
 
     def ver_versao(self):
