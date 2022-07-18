@@ -1,24 +1,24 @@
 from Modulos import *
 
 class Valida():
-    def valida_modulo(self, modulo):
-        self.parar = 'N'
-        self.c_modulo = modulo
-        self.conecta_voa()
-        self.contr_modulo = self.cursor_voa.execute("SELECT * FROM modulos WHERE codigo ='" + self.c_modulo + "'")
-        for listax in self.contr_modulo:
-            if listax[2] == 'S':
-                simnao = messagebox.askyesno(title='Validação ' + self.modulo, message='O ' + self.modulo + ' já foi validado, validar novamente?')
-                print(simnao, ' ****')
-                if simnao == 0:
-                    self.cursor_voa.execute("UPDATE modulos SET validado = 'N' WHERE codigo = '" + self.modulo + "';")
-                    self.banco_voa.commit()
-                    self.desconecta_voa()
-                else:
-                    self.desconecta_voa()
-                    self.c_script.destroy()
-                    self.parar = 'S'
-                    return self.parar
+    #def valida_modulo(self, modulo):
+    #    self.parar = 'N'
+    #    self.c_modulo = modulo
+    #    self.conecta_voa()
+    #    self.contr_modulo = self.cursor_voa.execute("SELECT * FROM modulos WHERE codigo ='" + self.c_modulo + "'")
+        #for listax in self.contr_modulo:
+        #    if listax[2] == 'S':
+        #        simnao = messagebox.askyesno(title='Validação ' + self.modulo, message='O ' + self.modulo + ' já foi validado, validar novamente?')
+        #        print(simnao, ' ****')
+        #        if simnao == 0:
+        #            self.cursor_voa.execute("UPDATE modulos SET validado = 'N' WHERE codigo = '" + self.modulo + "';")
+        #            self.banco_voa.commit()
+        #            self.desconecta_voa()
+        #        else:
+        #            self.desconecta_voa()
+        #            self.c_script.destroy()
+        #            self.parar = 'S'
+        #            return self.parar
 
     def leitura_banco(self):
         self.conecta_voa()
@@ -27,7 +27,7 @@ class Valida():
         self.lista_validada = []
         self.lista_nao_validada = []
         self.conecta_DB()
-        self.base = self.cursor_voa.execute("select * from valida where modulo = '" + self.modulo + "'")
+        self.base = self.cursor_voa.execute("select * from valida")# where modulo = '" + self.modulo + "'")
         for linha in self.base:
             self.s_id = linha[2]
             self.s_processo = linha[3]
@@ -180,21 +180,22 @@ class Valida():
                 elif detalhe[0] < self.s_val_minimo:
                     self.contador +=1
                     self.lista_nao_validada.append('- ' + linha[2] + '- ' + self.s_processo + ' - registros encontrados ' + str(detalhe[0]) + ', registros necessários ' + str(self.s_val_minimo) +  ' - NÃO OK.')
+                    self.listbox_res.insert(self.contador, '- ' + linha[2] + '- ' + self.s_processo + ' - registros encontrados ' + str(detalhe[0]) + ', registros necessários ' + str(self.s_val_minimo) +  ' - NÃO OK.')
         self.desconecta_DB()
         self.desconecta_voa()
 
-        self.conecta_DB()
-        self.conecta_voa()
-        if self.contador == 0:
-            self.geraRel('Processo Validado em ', self.lista_validada)
-            self.cursor_voa.execute("UPDATE modulos SET validado = 'S' WHERE codigo = '" + self.modulo + "';")
-            self.banco_voa.commit()
-        else:
-            self.geraRel('Processo NÃO Validado -  ', self.lista_nao_validada)
-            self.cursor_voa.execute("UPDATE modulos SET validado = 'N' WHERE codigo = '" + self.modulo + "';")
-            self.banco_voa.commit()
-        self.desconecta_DB()
-        self.desconecta_voa()
+        #self.conecta_DB()
+        #self.conecta_voa()
+        #if self.contador == 0:
+        #    self.geraRel('Processo Validado em ', self.lista_validada)
+        #    self.cursor_voa.execute("UPDATE modulos SET validado = 'S' WHERE codigo = '" + self.modulo + "';")
+        #    self.banco_voa.commit()
+        #else:
+        #    self.geraRel('Processo NÃO Validado -  ', self.lista_nao_validada)
+        #    self.cursor_voa.execute("UPDATE modulos SET validado = 'N' WHERE codigo = '" + self.modulo + "';")
+        #    self.banco_voa.commit()
+        #self.desconecta_DB()
+        #self.desconecta_voa()
 
     def construtor(self, modulo):
         self.modulo = modulo

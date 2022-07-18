@@ -6,6 +6,12 @@ class Funcs():
         self.empresa = ''
 
     def seleciona_revenda(self):
+        self.listbox_res = Listbox(self.resultado, width=113, height=35)
+        self.listbox_res.place(relx=0.01, rely=0.01)
+        self.btn_erro = Button(self.resultado, text = 'Imprime erros', font=('verdana', 8, 'bold'), bg = '#D3D3D3', height = 2, width = 20)
+        self.btn_erro.place(relx = 0.25, rely = 0.93)
+        self.btn_fim = Button(self.resultado, text = 'Imprime Validação', font=('verdana', 8, 'bold'), bg = '#D3D3D3', height = 2, width = 20,state='disable')
+        self.btn_fim.place(relx = 0.55, rely = 0.93)
         empresa = []
         revenda = []
         combo_p1 = []
@@ -18,9 +24,9 @@ class Funcs():
         self.empresa = ', '.join(empresa)
         self.revenda = ', '.join(revenda)
         self.combo_p = ', '.join(combo_p1)
-        self.cnpj = ', '.join(cnpj)
-        self.resultado.focus_force()
-
+        self.cnpj = ', '.join(cnpj) 
+        self.leitura_banco()
+        
     def frame_revenda(self):
         self.lbl_emprev = Label(self.frame_selecao, text = 'Empresa/Revenda', font=('verdana', 8, 'bold'))
         self.lbl_emprev.place(relx = 0.05, rely=0.02)
