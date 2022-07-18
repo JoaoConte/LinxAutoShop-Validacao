@@ -173,7 +173,7 @@ class Valida():
                     self.scr_valida = self.scr_valida + " AND " + linha[33] + " LIKE %" + linha[35] + " % "
 # ## Fim bloco 5
             lista_validada_1 = self.cursor.execute(self.scr_valida)
-            print(self.scr_valida)
+            #print(self.scr_valida)
             for detalhe in lista_validada_1:
                 if detalhe[0] >= int(self.s_val_minimo):
                     self.lista_validada.append('- ' + linha[2] + '- ' + self.s_processo + ' - ' + str(detalhe[0]) + '- OK.')

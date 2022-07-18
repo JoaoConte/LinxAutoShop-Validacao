@@ -24,7 +24,8 @@ class Funcs():
         self.empresa = ', '.join(empresa)
         self.revenda = ', '.join(revenda)
         self.combo_p = ', '.join(combo_p1)
-        self.cnpj = ', '.join(cnpj) 
+        self.cnpj = ', '.join(cnpj)
+        self.tab_control.select(tab_id=1)  # Força a mudança de abas condicionalmente  - os ID das abas iniciam em ZERO
         self.leitura_banco()
         
     def frame_revenda(self):
