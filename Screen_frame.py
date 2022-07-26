@@ -3,15 +3,14 @@ from Funcoes import *
 
 class Screen():
 
-    def datago(self):
+    def datago(self): # Carrega Data corte da validação (Normalmente data do Go-Live da loja/grupo)
         self.lbl_cal = Label(self.frame_selecao, text = 'Data GO-LIVE', font = ('verdana', 8, 'bold'))
         self.lbl_cal.place(relx = 0.63, rely = 0.02)
         self.ent_cal = DateEntry(self.frame_selecao, locale='pt_br')
         self.ent_cal.delete(0,END)
         self.ent_cal.place(relx=0.63, rely=0.1)
 
-    def tela_validacao(self):
-
+    def tela_validacao(self): # Tela parâmetros da validação
         self.telaval.title('Validação da Operação Assistida')
         self.telaval.geometry('700x650+300+20')
         self.telaval.resizable(False, False)
@@ -31,12 +30,11 @@ class Screen():
         self.frame_acesso.pack()
         self.frame_selecao.pack()
 
-        self.le_conexao() # Le arquivo conexao.dat para identificar qual banco de dados
+        self.le_conexao() # Le arquivo conexao.dat para identificar qual banco de dados e se necessário solicitar usuário e senha Oracle
         if self.bancodados == 'SQLSERVER':
             self.mostra_banco = Label(self.frame_acesso, text='Banco de Dados: SQL-SERVER', font=('verdana', 15, 'bold'))
             self.mostra_banco.place(relx= 0.25, rely=0.35)
             self.ver_versao()
-
         else:
             self.mostra_banco = Label(self.frame_acesso, text='Banco de Dados: ORACLE', font=('verdana', 15, 'bold'))
             self.mostra_banco.place(relx= 0.30, rely=0.10)   
