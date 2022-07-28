@@ -2,4 +2,8 @@ Este projeto faz leitura de um banco de dados de cliente Autoshop Linx Stone e s
 
 em 06/07/2022. Novo repositorio criado a partir da necessidade de separar o modulo de cadastros de scripts da rotina de validação da operação assistida. 
 
+A rotina de cadastros esta aos cuidados do meu amigo e companheiro de trabalho Bruno Marques.
+A rotina de validação esta aos meus cuidados.
+Estes fontes, icones e base de dados esta disponivel a todos os integrantes da equipe. 
+
 Processo de analise e desenvolvimento iniciado em Junho/2022 com 2 analistas programadores e termino previsto em Novenbro/2022.

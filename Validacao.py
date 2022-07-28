@@ -34,143 +34,153 @@ class Valida():
             self.s_tabela_pri = linha[4]
             self.s_val_minimo = linha[36]
             self.scr_valida = "SELECT COUNT(*) FROM " + self.s_tabela_pri + " rf1"
-            # if linha[5] == 'N':
-            #     pass
-            # if linha[13] == 'N':
-            #     pass
+            if linha[5] != 'N':
+                if linha[6] != ' ':
+                    self.scr_valida = self.scr_valida + " LEFT JOIN " + linha[6] + " rf2 ON rf2." + linha[7] + " = rf1." + linha[8] 
+                    if linha[9] != ' ':
+                        self.scr_valida = self.scr_valida + " AND rf2."+ linha[9] + " = rf1." + linha[10]
+                        if linha[11] != ' ':
+                            self.scr_valida = self.scr_valida + " AND rf2."+ linha[11] + " = rf1." + linha[12]
+            if linha[13] != 'N':
+                if linha[14] != ' ':
+                    self.scr_valida = self.scr_valida + " LEFT JOIN " + linha[14] + " rf3 ON rf3." + linha[25] + " = rf1." + linha[16] 
+                    if linha[17] != ' ':
+                        self.scr_valida = self.scr_valida + " AND rf3."+ linha[17] + " = rf1." + linha[18]
+                        if linha[19] != ' ':
+                            self.scr_valida = self.scr_valida + " AND rf3."+ linha[19] + " = rf1." + linha[20]                
             if linha[21] != " ":
-                if linha[22] == "Empresa":
-                    self.scr_valida = self.scr_valida + " WHERE rf1." + linha[21] + " = " + self.empresa + " "
-                if linha[22] == "Revenda":
-                    self.scr_valida = self.scr_valida + " WHERE rf1." + linha[21] + " = " + self.revenda + " "
-                if linha[22] == "Data":
+                if linha[23] == "Empresa":
+                    self.scr_valida = self.scr_valida + " WHERE " + linha[21] + " = " + self.empresa + " "
+                if linha[23] == "Revenda":
+                    self.scr_valida = self.scr_valida + " WHERE " + linha[21] + " = " + self.revenda + " "
+                if linha[23] == "Data":
                     if self.bancodados == 'SQLSERVER':
-                        self.scr_valida = self.scr_valida + " WHERE rf1." + linha[21] + " >= " + self.data_go + " "
+                        self.scr_valida = self.scr_valida + " WHERE " + linha[21] + " >= " + self.data_go + " "
                     else:
-                        self.scr_valida = self.scr_valida + " WHERE rf1." + linha[21] + " = TO_DATE('" + self.data_go + "', 'dd/mm/yyyy') "
-                if linha[22] == "Maior que":
-                    self.scr_valida = self.scr_valida + " WHERE rf1." + linha[21] + " > " + linha[23] + " "
-                if linha[22] == "Menor que":
-                    self.scr_valida = self.scr_valida + " WHERE rf1." + linha[21] + " < " + linha[23] + " "
-                if linha[22] == "Diferente":
-                    self.scr_valida = self.scr_valida + " WHERE rf1." + linha[21] + " != " + linha[23] + " "
-                if linha[22] == "Igual":
-                    self.scr_valida = self.scr_valida + " WHERE rf1." + linha[21] + " = " + linha[23] + " "
-                if linha[22] == "IN":
-                    self.scr_valida = self.scr_valida + " WHERE rf1." + linha[21] + " IN (" + linha[23] + ") "
-                if linha[22] == "IS NULL":
-                    self.scr_valida = self.scr_valida + " WHERE rf1." + linha[21] + " IS NULL "
-                if linha[22] == "IS NOT NULL":
-                    self.scr_valida = self.scr_valida + " WHERE rf1." + linha[21] + " IS NOT NULL  "
-                if linha[22] == "LIKE":
-                    self.scr_valida = self.scr_valida + " WHERE rf1." + linha[21] + " LIKE % " + linha[23] + " % "
+                        self.scr_valida = self.scr_valida + " WHERE " + linha[21] + " = TO_DATE('" + self.data_go + "', 'dd/mm/yyyy') "
+                if linha[23] == "Maior que":
+                    self.scr_valida = self.scr_valida + " WHERE " + linha[21] + " > " + linha[24] + " "
+                if linha[23] == "Menor que":
+                    self.scr_valida = self.scr_valida + " WHERE " + linha[21] + " < " + linha[24] + " "
+                if linha[23] == "Diferente":
+                    self.scr_valida = self.scr_valida + " WHERE " + linha[21] + " != " + linha[24] + " "
+                if linha[23] == "Igual":
+                    self.scr_valida = self.scr_valida + " WHERE " + linha[21] + " = " + linha[24] + " "
+                if linha[23] == "IN":
+                    self.scr_valida = self.scr_valida + " WHERE " + linha[21] + " IN (" + linha[24] + ") "
+                if linha[23] == "IS NULL":
+                    self.scr_valida = self.scr_valida + " WHERE " + linha[21] + " IS NULL "
+                if linha[23] == "IS NOT NULL":
+                    self.scr_valida = self.scr_valida + " WHERE " + linha[21] + " IS NOT NULL  "
+                if linha[23] == "LIKE":
+                    self.scr_valida = self.scr_valida + " WHERE " + linha[21] + " LIKE % " + linha[24] + " % "
 ### Fim bloco 1
-            if linha[24] != " ":
-                if linha[25] == "Empresa":
-                    self.scr_valida = self.scr_valida + " AND " + linha[24] + " = " + self.empresa
-                if linha[25] == "Revenda":
-                     self.scr_valida = self.scr_valida + " AND " + linha[24] + " = " + self.revenda
-                if linha[25] == "Data":
+            if linha[25] != " ":
+                if linha[27] == "Empresa":
+                    self.scr_valida = self.scr_valida + " AND " + linha[25] + " = " + self.empresa
+                if linha[27] == "Revenda":
+                     self.scr_valida = self.scr_valida + " AND " + linha[25] + " = " + self.revenda
+                if linha[27] == "Data":
                     if self.bancodados == 'SQLSERVER':
-                        self.scr_valida = self.scr_valida + " AND " + linha[24] + " >= " + self.data_go
+                        self.scr_valida = self.scr_valida + " AND " + linha[25] + " >= " + self.data_go
                     else:
-                        self.scr_valida = self.scr_valida + " AND " + linha[24] + " = TO_DATE('" + self.data_go + "', 'dd/mm/yyyy') "
-                if linha[25] == "Maior que":
-                    self.scr_valida = self.scr_valida + " AND " + linha[24] + " > " + linha[26]
-                if linha[25] == "Menor que":
-                    self.scr_valida = self.scr_valida + " AND " + linha[24] + " < " + linha[26]
-                if linha[25] == "Diferente":
-                    self.scr_valida = self.scr_valida + " AND " + linha[24] + " != " + linha[26]
-                if linha[25] == "Igual":
-                    self.scr_valida = self.scr_valida + " AND " + linha[24] + " = " + linha[26]
-                if linha[25] == "IN":
-                    self.scr_valida = self.scr_valida + " AND " + linha[24] + " IN (" + linha[26] + ") "
-                if linha[25] == "IS NULL":
-                    self.scr_valida = self.scr_valida + " AND " + linha[24] + " IS NULL  "
-                if linha[25] == "IS NOT NULL":
-                    self.scr_valida = self.scr_valida + " AND " + linha[24] + " IS NOT NULL  "
-                if linha[25] == "LIKE":
-                    self.scr_valida = self.scr_valida + "AND " + linha[24] + " LIKE %" + linha[26] + " % "
+                        self.scr_valida = self.scr_valida + " AND " + linha[25] + " = TO_DATE('" + self.data_go + "', 'dd/mm/yyyy') "
+                if linha[27] == "Maior que":
+                    self.scr_valida = self.scr_valida + " AND " + linha[25] + " > " + linha[28]
+                if linha[27] == "Menor que":
+                    self.scr_valida = self.scr_valida + " AND " + linha[25] + " < " + linha[28]
+                if linha[27] == "Diferente":
+                    self.scr_valida = self.scr_valida + " AND " + linha[25] + " != " + linha[28]
+                if linha[27] == "Igual":
+                    self.scr_valida = self.scr_valida + " AND " + linha[25] + " = " + linha[28]
+                if linha[27] == "IN":
+                    self.scr_valida = self.scr_valida + " AND " + linha[25] + " IN (" + linha[28] + ") "
+                if linha[27] == "IS NULL":
+                    self.scr_valida = self.scr_valida + " AND " + linha[25] + " IS NULL  "
+                if linha[27] == "IS NOT NULL":
+                    self.scr_valida = self.scr_valida + " AND " + linha[25] + " IS NOT NULL  "
+                if linha[27] == "LIKE":
+                    self.scr_valida = self.scr_valida + "AND " + linha[25] + " LIKE %" + linha[28] + " % "
 ## Fim bloco 2
-            if linha[27] != " ":
-                if linha[28] == "Empresa":
-                    self.scr_valida = self.scr_valida + " AND " + linha[27] + " = " + self.empresa
-                if linha[28] == "Revenda":
-                    self.scr_valida = self.scr_valida + " AND " + linha[27] + " = " + self.revenda
-                if linha[28] == "Data":
-                    if self.bancodados == 'SQLSERVER':
-                        self.scr_valida = self.scr_valida + " AND " + linha[27] + " >= " + self.data_go
-                    else:
-                        self.scr_valida = self.scr_valida + " AND " + linha[27] + " = TO_DATE('" + self.data_go + "', 'dd/mm/yyyy') "
-                if linha[28] == "Maior que":
-                    self.scr_valida = self.scr_valida + " AND " + linha[27] + " > " + linha[29]
-                if linha[28] == "Menor que":
-                    self.scr_valida = self.scr_valida + " AND " + linha[27] + " < " + linha[29]
-                if linha[28] == "Diferente":
-                    self.scr_valida = self.scr_valida + " AND " + linha[27] + " != " + linha[29]
-                if linha[28] == "Igual":
-                    self.scr_valida = self.scr_valida + " AND " + linha[27] + " = " + linha[29]
-                if linha[28] == "IN":
-                    self.scr_valida = self.scr_valida + " AND " + linha[27] + " IN (" + linha[29] + ") "
-                if linha[28] == "IS NULL":
-                    self.scr_valida = self.scr_valida + " AND " + linha[27] + " IS NULL "
-                if linha[28] == "IS NOT NULL":
-                    self.scr_valida = self.scr_valida + " AND " + linha[27] + " IS NOT NULL "
-                if linha[28] == "LIKE":
-                    self.scr_valida = self.scr_valida + " AND " + linha[27] + " LIKE %" + linha[29] + " % "
-## Fim bloco 3
-            if linha[30] != " ":
+            if linha[29] != " ":
                 if linha[31] == "Empresa":
-                    self.scr_valida = self.scr_valida + " AND " + linha[30] + " = " + self.empresa
-                if linha[31] == "Revenda":+ " "
+                    self.scr_valida = self.scr_valida + " AND " + linha[29] + " = " + self.empresa
+                if linha[31] == "Revenda":
+                    self.scr_valida = self.scr_valida + " AND " + linha[29] + " = " + self.revenda
                 if linha[31] == "Data":
                     if self.bancodados == 'SQLSERVER':
-                        self.scr_valida = self.scr_valida + " AND " + linha[30] + " >= " + self.data_go
+                        self.scr_valida = self.scr_valida + " AND " + linha[29] + " >= " + self.data_go
                     else:
-                        self.scr_valida = self.scr_valida + " AND " + linha[30] + " = TO_DATE('" + self.data_go + "', 'dd/mm/yyyy') "
+                        self.scr_valida = self.scr_valida + " AND " + linha[29] + " = TO_DATE('" + self.data_go + "', 'dd/mm/yyyy') "
                 if linha[31] == "Maior que":
-                    self.scr_valida = self.scr_valida + " AND " + linha[30] + " > " + linha[32]
+                    self.scr_valida = self.scr_valida + " AND " + linha[29] + " > " + linha[32]
                 if linha[31] == "Menor que":
-                    self.scr_valida = self.scr_valida + " AND " + linha[30] + " < " + linha[32]
+                    self.scr_valida = self.scr_valida + " AND " + linha[29] + " < " + linha[32]
                 if linha[31] == "Diferente":
-                    self.scr_valida = self.scr_valida + " AND " + linha[30] + " != " + linha[32]
+                    self.scr_valida = self.scr_valida + " AND " + linha[29] + " != " + linha[32]
                 if linha[31] == "Igual":
-                    self.scr_valida = self.scr_valida + " AND " + linha[30] + " = " + linha[32]
+                    self.scr_valida = self.scr_valida + " AND " + linha[29] + " = " + linha[32]
                 if linha[31] == "IN":
-                    self.scr_valida = self.scr_valida + " AND " + linha[30] + " IN (" + linha[32]
+                    self.scr_valida = self.scr_valida + " AND " + linha[29] + " IN (" + linha[32] + ") "
                 if linha[31] == "IS NULL":
-                    self.scr_valida = self.scr_valida + " AND " + linha[30] + " IS NULL "
+                    self.scr_valida = self.scr_valida + " AND " + linha[29] + " IS NULL "
                 if linha[31] == "IS NOT NULL":
-                    self.scr_valida = self.scr_valida + " AND " + linha[30] + " IS NOT NULL "
+                    self.scr_valida = self.scr_valida + " AND " + linha[29] + " IS NOT NULL "
                 if linha[31] == "LIKE":
-                    self.scr_valida = self.scr_valida + " AND " + linha[30] + " LIKE %" + linha[32] + " % "
-## Fim bloco 4
+                    self.scr_valida = self.scr_valida + " AND " + linha[29] + " LIKE %" + linha[32] + " % "
+## Fim bloco 3
             if linha[33] != " ":
-                if linha[34] == "Empresa":
+                if linha[35] == "Empresa":
                     self.scr_valida = self.scr_valida + " AND " + linha[33] + " = " + self.empresa
-                if linha[34] == "Revenda":
-                    self.scr_valida = self.scr_valida + " AND " + linha[33] + " = " + self.revenda
-                if linha[34] == "Data":
+                if linha[35] == "Revenda":+ " "
+                if linha[35] == "Data":
                     if self.bancodados == 'SQLSERVER':
                         self.scr_valida = self.scr_valida + " AND " + linha[33] + " >= " + self.data_go
                     else:
                         self.scr_valida = self.scr_valida + " AND " + linha[33] + " = TO_DATE('" + self.data_go + "', 'dd/mm/yyyy') "
-                if linha[34] == "Maior que":
-                    self.scr_valida = self.scr_valida + " AND " + linha[33] + " > " + linha[35]
-                if linha[34] == "Menor que":
-                    self.scr_valida = self.scr_valida + " AND " + linha[33] + " < " + linha[35]
-                if linha[34] == "Diferente":
-                    self.scr_valida = self.scr_valida + " AND " + linha[33] + " != " + linha[35]
-                if linha[34] == "Igual":
-                    self.scr_valida = self.scr_valida + " AND " + linha[33] + " = " + linha[35]
-                if linha[34] == "IN":
-                    self.scr_valida = self.scr_valida + " AND " + linha[33] + " IN (" + linha[35] + ") "
-                if linha[34] == "IS NULL":
+                if linha[35] == "Maior que":
+                    self.scr_valida = self.scr_valida + " AND " + linha[33] + " > " + linha[36]
+                if linha[35] == "Menor que":
+                    self.scr_valida = self.scr_valida + " AND " + linha[33] + " < " + linha[36]
+                if linha[35] == "Diferente":
+                    self.scr_valida = self.scr_valida + " AND " + linha[33] + " != " + linha[36]
+                if linha[35] == "Igual":
+                    self.scr_valida = self.scr_valida + " AND " + linha[33] + " = " + linha[36]
+                if linha[35] == "IN":
+                    self.scr_valida = self.scr_valida + " AND " + linha[33] + " IN (" + linha[36]
+                if linha[35] == "IS NULL":
                     self.scr_valida = self.scr_valida + " AND " + linha[33] + " IS NULL "
-                if linha[34] == "IS NOT NULL":
+                if linha[35] == "IS NOT NULL":
                     self.scr_valida = self.scr_valida + " AND " + linha[33] + " IS NOT NULL "
-                if linha[34] == "LIKE":
-                    self.scr_valida = self.scr_valida + " AND " + linha[33] + " LIKE %" + linha[35] + " % "
+                if linha[35] == "LIKE":
+                    self.scr_valida = self.scr_valida + " AND " + linha[33] + " LIKE %" + linha[36] + " % "
+## Fim bloco 4
+            if linha[37] != " ":
+                if linha[39] == "Empresa":
+                    self.scr_valida = self.scr_valida + " AND " + linha[37] + " = " + self.empresa
+                if linha[39] == "Revenda":
+                    self.scr_valida = self.scr_valida + " AND " + linha[37] + " = " + self.revenda
+                if linha[39] == "Data":
+                    if self.bancodados == 'SQLSERVER':
+                        self.scr_valida = self.scr_valida + " AND " + linha[37] + " >= " + self.data_go
+                    else:
+                        self.scr_valida = self.scr_valida + " AND " + linha[37] + " = TO_DATE('" + self.data_go + "', 'dd/mm/yyyy') "
+                if linha[39] == "Maior que":
+                    self.scr_valida = self.scr_valida + " AND " + linha[37] + " > " + linha[40]
+                if linha[39] == "Menor que":
+                    self.scr_valida = self.scr_valida + " AND " + linha[37] + " < " + linha[40]
+                if linha[39] == "Diferente":
+                    self.scr_valida = self.scr_valida + " AND " + linha[37] + " != " + linha[40]
+                if linha[39] == "Igual":
+                    self.scr_valida = self.scr_valida + " AND " + linha[37] + " = " + linha[40]
+                if linha[39] == "IN":
+                    self.scr_valida = self.scr_valida + " AND " + linha[37] + " IN (" + linha[40] + ") "
+                if linha[39] == "IS NULL":
+                    self.scr_valida = self.scr_valida + " AND " + linha[37] + " IS NULL "
+                if linha[39] == "IS NOT NULL":
+                    self.scr_valida = self.scr_valida + " AND " + linha[37] + " IS NOT NULL "
+                if linha[39] == "LIKE":
+                    self.scr_valida = self.scr_valida + " AND " + linha[37] + " LIKE %" + linha[40] + " % "
 # ## Fim bloco 5
             lista_validada_1 = self.cursor.execute(self.scr_valida)
             #print(self.scr_valida)
